@@ -1,15 +1,12 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% provide(:title, "Log in") %>
+<h1>Log in</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <!-- form_for(モデルオブジェクト, url: フォームの送信先) -->
+    <!-- モデルオブジェクトの代わりにセッションパラメータを使う -->
     <!-- フォームの送信先とは、action=""の中身に設定するURLのこと -->
-    <%= form_for(@user, url: signup_path) do |f| %>
-      <%= render 'shared/error_messages' %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+    <%= form_for(:session, url: login_path) do |f| %>
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
@@ -17,10 +14,9 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <%= f.submit "Log in", class: "btn btn-primary" %>
     <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   </div>
 </div>
