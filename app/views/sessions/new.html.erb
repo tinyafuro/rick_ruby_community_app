@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <!-- form_for(モデルオブジェクト, url: フォームの送信先) -->
-    <!-- モデルオブジェクトの代わりにセッションパラメータを使う -->
+    <!-- モデルオブジェクトの代わりにセッションパラメータ（ params[:session] ）を使う -->
     <!-- フォームの送信先とは、action=""の中身に設定するURLのこと -->
     <%= form_for(:session, url: login_path) do |f| %>
 
@@ -13,6 +13,12 @@
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
+
+      <!-- params[:session][:remember_me]と紐づけられる -->
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+      <% end %>
 
       <%= f.submit "Log in", class: "btn btn-primary" %>
     <% end %>
