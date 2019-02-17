@@ -14,11 +14,11 @@ class CommunitiesController < ApplicationController
   end
 
   def edit
-    @community = Community.find(params[:id])
+    # @community = Community.find(params[:id])
   end
 
   def create
-    # @community = current_user.community.build(community_params)
+    @community = current_user.community.build(community_params)
     if @community.save
       flash[:success] = "Community created!"
       redirect_to root_url
