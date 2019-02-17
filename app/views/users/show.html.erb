@@ -8,4 +8,15 @@
       </h1>
     </section>
   </aside>
+
+  <!-- Community情報 -->
+  <div class="col-md-8">
+    <% if @user.community.any? %>
+      <h3>Communities (<%= @user.community.count %>)</h3>
+        <ol class="communities">
+          <%= render @communities %>
+        </ol>
+      <%= will_paginate @communities %>
+    <% end %>
+  </div>
 </div>

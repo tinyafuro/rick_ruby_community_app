@@ -1,0 +1,6 @@
+<li id="community-<%= community.id %>">
+  <%= link_to gravatar_for(community.user, size: 50), community.user %>
+  <span class="user"><%= link_to community.user.name, community.user %></span>
+  <span class="community_name"><%= community.title %></span>
+  <span class="community_body"><%= community.body %></span>
+</li>
