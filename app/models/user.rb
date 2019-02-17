@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :community, dependent: :destroy
+
   # cookiesの保存場所
   attr_accessor :remember_token
   
