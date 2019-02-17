@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :communities, only: [:create, :destroy]
+  resources :communities, only: [:index, :create, :destroy]
   
   # get 'static_pages/home'
   # get 'static_pages/help'

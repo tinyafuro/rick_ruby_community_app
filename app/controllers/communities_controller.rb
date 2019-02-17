@@ -3,6 +3,10 @@ class CommunitiesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
+  def index
+    @communities = Community.paginate(page: params[:page])
+  end
+
   def create
     @community = current_user.community.build(community_params)
     if @community.save

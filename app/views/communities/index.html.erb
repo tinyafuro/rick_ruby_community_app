@@ -1,0 +1,9 @@
+<% provide(:title, 'All Community') %>
+
+<h1>All Community</h1>
+
+<%= will_paginate @communities %>
+<ul class="communities">
+    <%= render @communities %>
+</ul>
+<%= will_paginate @communities %>
