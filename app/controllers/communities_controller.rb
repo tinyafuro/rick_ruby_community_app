@@ -23,7 +23,7 @@ class CommunitiesController < ApplicationController
   private
 
     def community_params
-      params.require(:community).permit(:title, :body)
+      params.require(:community).permit(:title, :body, :picture)
     end
 
     def correct_user
