@@ -1,0 +1,30 @@
+<ul class="communities">
+  <li id="community-<%= @community.id %>">
+
+    <!-- ユーザー画像 -->
+    <%= link_to gravatar_for(@community.user, size: 50), @community.user %>
+
+    <!-- ユーザー名 -->
+    <span class="user"><%= link_to @community.user.name, @community.user %></span>
+
+    <!-- Communityタイトル -->
+    <span class="community_title"><%= @community.title %></span>
+
+    <!-- Communityボディ -->
+    <span class="community_body">
+      <%= @community.body %>
+      <!-- アップロードPicture -->
+      <%= image_tag @community.picture.url if @community.picture? %>
+    </span>
+
+    <!-- 編集ボタン -->
+    <% if current_user?(@community.user) %>
+      <%= link_to "編集", edit_community_path(@community), class: "btn btn-sm btn-primary" %>
+      <%= link_to "削除", @community, class: "btn btn-sm btn-primary", method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
+
+    <!--戻るボタン-->
+    <%= link_to "一覧へ戻る", redirect_before_url, class: "btn btn-sm btn-primary" %>
+
+  </li>
+</ul>

@@ -16,6 +16,9 @@
     <%= image_tag community.picture.url if community.picture? %>
   </span>
 
+  <!-- 詳細表示ボタン -->
+  <%= link_to "詳細", community, class: "btn btn-sm btn-primary"%>
+
   <!-- Delete -->
   <% if current_user?(community.user) %>
     <%= link_to "delete", community, method: :delete, data: { confirm: "You sure?" } %>
