@@ -52,4 +52,9 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  # 試作feedの定義
+  def feed
+    Community.where("user_id = ?", id)
+  end
+
 end

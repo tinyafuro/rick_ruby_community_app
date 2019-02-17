@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users
+
+  resources :communities, only: [:create, :destroy]
   
   # get 'static_pages/home'
   # get 'static_pages/help'

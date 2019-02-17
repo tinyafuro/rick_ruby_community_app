@@ -3,4 +3,9 @@
   <span class="user"><%= link_to community.user.name, community.user %></span>
   <span class="community_name"><%= community.title %></span>
   <span class="community_body"><%= community.body %></span>
+
+  <% if current_user?(community.user) %>
+    <%= link_to "delete", community, method: :delete, data: { confirm: "You sure?" } %>
+  <% end %>
+  
 </li>
