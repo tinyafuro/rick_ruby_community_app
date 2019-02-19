@@ -7,16 +7,10 @@
         <%= @user.name %>
       </h1>
     </section>
-
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-
   </aside>
 
   <!-- Community情報 -->
   <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
     <% if @user.community.any? %>
       <h3>Communities (<%= @user.community.count %>)</h3>
         <ol class="communities">

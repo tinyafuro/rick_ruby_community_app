@@ -65,6 +65,7 @@ class User < ApplicationRecord
 
   # コミュニティをフォロー解除する
   def unfollow(community)
+    # debugger
     CommunityJoin.find_by(community_id: community.id).destroy
   end
 

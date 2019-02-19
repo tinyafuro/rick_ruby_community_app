@@ -26,5 +26,10 @@
     <!--戻るボタン-->
     <%= link_to "一覧へ戻る", redirect_before_url, class: "btn btn-sm btn-primary" %>
 
+    <!-- フォローボタン -->
+    <div class="col-md-8">
+      <%= render 'follow_form' if logged_in? %>
+    </div>
+
   </li>
 </ul>
