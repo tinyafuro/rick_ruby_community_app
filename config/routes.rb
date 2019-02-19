@@ -14,12 +14,19 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users
-
   resources :communities
+
+  resources :users do
+    member do
+      get :following
+    end
+  end
+
+
+
+
   # resources :communities, only: [:create, :destroy]
   # resources :communities, only: [:index, :show, :create, :destroy]
-
-  
   
   # get 'static_pages/home'
   # get 'static_pages/help'

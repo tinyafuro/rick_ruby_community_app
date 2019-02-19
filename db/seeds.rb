@@ -34,3 +34,13 @@ users = User.order(:created_at).take(6)
   community_body = Faker::Address.state
   users.each { |user| user.community.create!(title: community_title, body: community_body) }
 end
+
+
+# UserとCommunityのリレーションシップ
+users = User.all
+user1  = users.first
+user2  = users.second
+following1 = communitys[1..50]
+following2 = users[10..40]
+following1.each { |followed| user1.follow(followed) }
+following2.each { |followed| user2.follow(followed) }

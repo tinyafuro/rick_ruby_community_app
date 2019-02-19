@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-
   has_many :community, dependent: :destroy
+  has_many :community_join, dependent: :destroy
+  has_many :following, through: :community_join, source: :community
 
   # cookiesの保存場所
   attr_accessor :remember_token
@@ -55,6 +56,21 @@ class User < ApplicationRecord
   # 試作feedの定義
   def feed
     Community.where("user_id = ?", id)
+  end
+
+  # コミュニティをフォローする
+  def follow(community)
+    following << community
+  end
+
+  # コミュニティをフォロー解除する
+  def unfollow(community)
+    CommunityJoin.find_by(community_id: community.id).destroy
+  end
+
+  # 現在のコミュニティがフォローしてたらtrueを返す
+  def following?(community)
+    following.include?(community)
   end
 
 end
