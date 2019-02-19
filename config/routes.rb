@@ -15,13 +15,15 @@ Rails.application.routes.draw do
 
   resources :users
   resources :communities
-
+  resources :community_joins, only: [:create, :destroy]
+  
   resources :users do
     member do
       get :following
     end
   end
 
+  
 
 
 
