@@ -1,13 +1,26 @@
 <li id="community-<%= community.id %>">
 
+<%
+=begin
+%>
+
   <!-- ユーザー画像 -->
   <%= link_to gravatar_for(community.user, size: 50), community.user %>
 
   <!-- ユーザー名 -->
   <span class="user"><%= link_to community.user.name, community.user %></span>
 
+<%
+=end
+%>
+
   <!-- Communityタイトル -->
-  <span class="community_title"><%= community.title %></span>
+  <span class="community_title">
+    <div class="row">
+      <div class="col-md-8"><%= community.title %></div>
+      <div class="col-md-4"><%= link_to community.user.name, community.user %></div>
+    </div>
+  </span>
 
   <!-- Communityボディ -->
   <span class="community_body">
@@ -19,9 +32,17 @@
   <!-- 詳細表示ボタン -->
   <%= link_to "詳細", community, class: "btn btn-sm btn-primary"%>
 
+<%
+=begin
+%>
+
   <!-- Delete -->
   <% if current_user?(community.user) %>
     <%= link_to "delete", community, method: :delete, data: { confirm: "You sure?" } %>
   <% end %>
+
+<%
+=end
+%>
   
 </li>
