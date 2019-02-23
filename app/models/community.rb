@@ -3,7 +3,7 @@ class Community < ApplicationRecord
   #User／Communityの関連付け（１対１）
   belongs_to :user
   has_many :community_join, dependent: :destroy
-  has_many :followers, through: :community_joins, source: :users
+  has_many :followers, through: :community_join, source: :user
   
   #デフォルトの順序を指定
   default_scope -> { order(created_at: :desc) }

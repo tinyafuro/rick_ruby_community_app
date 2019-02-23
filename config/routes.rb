@@ -23,6 +23,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :communities do
+    member do
+      get :followers
+    end
+  end
   
 
 

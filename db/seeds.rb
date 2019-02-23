@@ -38,9 +38,24 @@ end
 
 # UserとCommunityのリレーションシップ
 users = User.all
+communities = Community.all
+
 user1  = users.first
 user2  = users.second
-following1 = communitys[1..50]
-following2 = users[10..40]
-following1.each { |followed| user1.follow(followed) }
-following2.each { |followed| user2.follow(followed) }
+community1 = communities.first
+community2 = communities.second
+
+users1 = users[1..20]
+users2 = users[10..15]
+communities1 = communities[3..50]
+communities2 = communities[10..40]
+
+# ID1のユーザーがID3〜50のコミュニティをフォローする
+communities1.each { |community| user1.follow(community) }
+# ID2のユーザーがID10〜40のコミュニティをフォローする
+communities2.each { |community| user2.follow(community) }
+
+# ID1から20のユーザーがID1のコミュニティをフォローする
+users1.each { |user|  user.follow(community1)}
+# ID10から15のユーザーがID2のコミュニティをフォローする
+users2.each { |user|  user.follow(community2)}
