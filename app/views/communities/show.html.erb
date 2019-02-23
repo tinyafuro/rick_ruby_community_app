@@ -1,6 +1,91 @@
-<ul class="communities">
-  <li id="community-<%= @community.id %>">
+<ul class="community-show">
 
+  <!-- 操作ボタン（左サイドバー） -->
+  <div class="side-leftbar">
+      <!--戻るボタン-->
+      <div class="side-btn"><%= link_to "一覧へ戻る", redirect_before_url, class: "btn btn-sm btn-primary btn-block" %></div>
+
+      <!-- 編集ボタン -->
+      <% if current_user?(@community.user) %>
+        <div class="side-btn"><%= link_to "編 集", edit_community_path(@community), class: "btn btn-sm btn-primary btn-block" %></div>
+        <div class="side-btn"><%= link_to "削 除", @community, class: "btn btn-sm btn-primary btn-block", method: :delete, data: { confirm: "You sure?" } %></div>
+      <% end %>
+  </div>
+
+  <!-- 参加ユーザー（フォロー）一覧を表示（右サイドバー） -->
+  <div class="side-rightbar">
+
+    <!-- フォローボタン -->
+    <div class="follow-btn">
+      <%= render 'follow_form' if logged_in? %>
+    </div>
+
+    <div class="side-header">参加者: <span id="followers"><%= @community.followers.count %></span>人</div>
+
+    <div id="followers-list">
+      <% @community.followers.each do |follower| %>
+        <p>
+          <span class="side-user">
+            <%= link_to gravatar_for(follower, size: 24), follower %>
+            <%= link_to follower.name.truncate(18), follower %>
+          </span>
+        </p>
+      <% end %>
+    </div>
+
+  </div>
+
+  <!-- コミュニティー詳細のメインブロック -->
+  <div class="main">
+
+    <li id="community-<%= @community.id %>">
+
+      <!-- Communityヘッダ部分 -->
+      <div class="community_header">
+        
+        <!-- タグ -->
+        <span class="col-md-7">
+          <span class="tag">Ruby on Rails</span>
+        </span>
+
+        <!-- ユーザー名 -->
+        <span class="col-md-3">
+          <span class="user-name">
+            <%= link_to gravatar_for(@community.user, size: 24), @community.user %>
+            <%= link_to @community.user.name.truncate(18), @community.user %>
+          </span>
+        </span>
+
+        <!-- 更新日 -->
+        <span class="col-md-2">
+          <span class="time-stamp">公開日: <%= @community.updated_at %></span>
+        </span>
+      </div>
+
+      <!-- Communityタイトル （32文字以上は...と省略させる）-->
+      <div class="community_title">
+        <%= @community.title.truncate(32) %>
+      </div>
+
+      <!-- アップロードPicture -->
+      <%= image_tag @community.picture.url if @community.picture? %>
+
+
+      <!-- Communityボディ -->
+      <div class="community_body">
+          <%= @community.body %>
+      </div>
+
+    </div>
+  </div>
+</ul>
+
+
+
+
+<% 
+=begin
+%>
     <!-- ユーザー画像 -->
     <%= link_to gravatar_for(@community.user, size: 50), @community.user %>
 
@@ -31,5 +116,13 @@
       <%= render 'follow_form' if logged_in? %>
     </div>
 
-  </li>
-</ul>
+
+
+
+
+
+
+<%
+=end
+%>
+
