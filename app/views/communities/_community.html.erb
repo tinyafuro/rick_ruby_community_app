@@ -1,48 +1,44 @@
 <li id="community-<%= community.id %>">
 
-<%
-=begin
-%>
+  <!-- Communityヘッダ部分 -->
+  <div class="community_header">
+    <!-- タグ -->
+    <span class="col-md-7">
+      <span class="tag">Ruby on Rails</span>
+    </span>
 
-  <!-- ユーザー画像 -->
-  <%= link_to gravatar_for(community.user, size: 50), community.user %>
+    <!-- ユーザー名 -->
+    <span class="col-md-3">
+      <span class="user-name">
+        <%= link_to gravatar_for(community.user, size: 24), community.user %>
+        <%= link_to community.user.name.truncate(18), community.user %>
+      </span>
+    </span>
 
-  <!-- ユーザー名 -->
-  <span class="user"><%= link_to community.user.name, community.user %></span>
+    <!-- 更新日 -->
+    <span class="col-md-2">
+      <span class="time-stamp">公開日: <%= community.updated_at %></span>
+    </span>
+  </div>
 
-<%
-=end
-%>
 
-  <!-- Communityタイトル -->
-  <span class="community_title">
-    <div class="row">
-      <div class="col-md-8"><%= community.title %></div>
-      <div class="col-md-4"><%= link_to community.user.name, community.user %></div>
-    </div>
-  </span>
+  <!-- Communityタイトル （32文字以上は...と省略させる）-->
+  <div class="community_title">
+    <%= link_to community.title.truncate(32), community%>
+  </div>
+
 
   <!-- Communityボディ -->
-  <span class="community_body">
-    <%= community.body %>
-    <!-- アップロードPicture -->
-    <%= image_tag community.picture.url if community.picture? %>
-  </span>
+  <div>
+    <!-- 本文（64文字以上は...と省略させる）-->
+    <span class="col-md-10">
+      <span class="community_body"><%= community.body.truncate(52) %></span>
+    </span>
 
-  <!-- 詳細表示ボタン -->
-  <%= link_to "詳細", community, class: "btn btn-sm btn-primary"%>
-
-<%
-=begin
-%>
-
-  <!-- Delete -->
-  <% if current_user?(community.user) %>
-    <%= link_to "delete", community, method: :delete, data: { confirm: "You sure?" } %>
-  <% end %>
-
-<%
-=end
-%>
+    <!-- フォロワー人数 -->
+    <span class="col-md-2">
+      <span class="follower">10人</span>
+    </span>
+  </div>
   
 </li>

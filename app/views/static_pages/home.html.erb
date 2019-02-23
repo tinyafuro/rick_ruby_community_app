@@ -1,3 +1,26 @@
+<div class="center">
+
+  <!-- ヘッダー画像 -->
+  <%= link_to image_tag("header.png", alt: "Header Image") %>
+
+  <!-- ページネーション -->
+  <%= will_paginate @communities %>
+
+</div>
+
+<!-- コミュニティ一覧 -->
+<ul class="communities">
+    <%= render @communities %>
+</ul>
+
+<div class="center">
+  <!-- ページネーション -->
+  <%= will_paginate @communities %>
+</div>
+
+
+
+
 <%
 =begin
 %>
@@ -47,11 +70,3 @@
 <%
 =end
 %>
-
-
-<!-- コミュニティ一覧 -->
-<%= will_paginate @communities %>
-<ul class="communities">
-    <%= render @communities %>
-</ul>
-<%= will_paginate @communities %>

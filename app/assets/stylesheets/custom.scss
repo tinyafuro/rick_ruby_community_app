@@ -251,36 +251,65 @@ input {
 /* communities */
 .communities {
   list-style: none;
-  padding: 0;
+  padding: 0px 30px 0px 30px;
   li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    padding: 10px 0px 30px 0px;
+    border: 2px solid #e8e8e8;
+    margin: 10px 100px 30px 100px;
   }
-  .user {
-    margin-top: 60em;
-    padding-top: 0;
+  .tag {
+    font-size: 0.8em;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 6px 8px 6px 8px;
+    border-radius: 0.8em;
+    color: white;
+    background-color: #c0392b;
+  }
+  .gravatar {
+    float: left;
+    margin-left: 60px;
+    margin-right: 5px;
+    
+  }
+  .user-name {
+    font-size: 0.9em;
+    margin-top: 20px;
+    padding: 6px 8px 6px 8px;
+    border-radius: 0.8em;
+    background-color: #e8e8e8;
+  }
+  .time-stamp {
+    font-size: 0.8em;
+    color: gray;
+    margin-top: 20px;
+    margin-left: 10px;
   }
   .community_title {
-    display: block;
-    margin-left: 60px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-size: 2.0em
+    font-size: 1.7em;
+    margin: 40px 30px 10px 30px;
   }
   .community_body {
-    display: block;
-    margin-left: 60px;
+    font-size: 1.0em;
+    margin: 0px 30px 10px 20px;
+    color: gray;
     img {
       display: block;
       padding: 5px 0;
     }
   }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
+  .follower {
+    font-size: 1.2em;
+    margin-left: 30px;
   }
 }
+
+img {
+  max-width: 100%;
+	height: auto;
+}
+
+
 aside {
   textarea {
     height: 100px;

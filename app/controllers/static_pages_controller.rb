@@ -1,13 +1,15 @@
 class StaticPagesController < ApplicationController
 
   def home
-    if logged_in?
+    # すべてのコミュニティ情報取得
+    @communities = Community.paginate(page: params[:page])
+    # 現在のURLを記憶
+    before_location root_path
+
+    # if logged_in?
       # @community  = current_user.community.build
       # @feed_items = current_user.feed.paginate(page: params[:page])
-      @communities = Community.paginate(page: params[:page])
-      #現在のURLを記憶
-      before_location root_path
-    end
+    # end
   end
 
   def help
