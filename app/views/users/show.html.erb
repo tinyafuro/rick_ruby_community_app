@@ -19,7 +19,11 @@
       </div>
 
       <!-- コミュニティ作成ボタン -->
-      <div class="side-btn"><%= link_to "コミュニティ作成", edit_community_path(@communities.first), class: "btn btn-sm btn-primary btn-block" %></div>
+      <% if current_user?(@user) %>
+        <div class="side-btn">
+          <%= link_to "コミュニティ作成", new_community_path, class: "btn btn-sm btn-primary btn-block" %>
+        </div>
+      <% end %>
 
     </aside>
 
@@ -43,28 +47,28 @@
             </p>
 
             <!-- 作成コミュニティ -->
-            <% if @user.community.any? %>
-              <ol class="user-show">
-                <%= render @communities %>
-              </ol>
-            <% end %>
-
+            <div class="scroll-box">
+              <% if @user.community.any? %>
+                <ol class="user-show">
+                  <%= render @communities %>
+                </ol>
+              <% end %>
+            </div>
           </div>
-          
           <div class="tab-pane" id="tab_b" role="tabpanel">
             <p class="tab-head">
               参加コミュニティ
             </p>
 
             <!-- 参加コミュニティ -->
-            <% if @user.following.any? %>
-              <ol class="user-show">
-                <%= render @user.following %>
-              </ol>
-            <% end %>
-
+            <div class="scroll-box">
+              <% if @followes.any? %>
+                <ol class="user-show">
+                  <%= render @followes %>
+                </ol>
+              <% end %>
+            </div>
           </div>
-          <div class="center"><%= will_paginate @communities %></div>
         </div>
       </div>
     </div>
@@ -103,6 +107,7 @@
 </div>
 
     <h3>Communities (<%= @user.community.count %>)</h3>
+            <div class="center"><%= will_paginate @communities %></div>
 
 <%
 =end

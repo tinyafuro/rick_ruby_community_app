@@ -14,7 +14,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @communities = @user.community.paginate(page: params[:page], per_page: 5)
+    @communities = @user.community
+    @followes = @user.following
+    # 現在のURLを記憶
+    before_location user_path
+    # @communities = @user.community.paginate(page: params[:page], per_page: 5)
+    # @followes = @user.following.paginate(page: params[:page], per_page: 5)
     # debugger
   end
 

@@ -2,14 +2,31 @@
 
   <!-- 操作ボタン（左サイドバー） -->
   <div class="side-leftbar">
-      <!--戻るボタン-->
-      <div class="side-btn"><%= link_to "一覧へ戻る", redirect_before_url, class: "btn btn-sm btn-primary btn-block" %></div>
 
-      <!-- 編集ボタン -->
-      <% if current_user?(@community.user) %>
-        <div class="side-btn"><%= link_to "編 集", edit_community_path(@community), class: "btn btn-sm btn-primary btn-block" %></div>
-        <div class="side-btn"><%= link_to "削 除", @community, class: "btn btn-sm btn-primary btn-block", method: :delete, data: { confirm: "You sure?" } %></div>
-      <% end %>
+    <!-- ユーザー情報 -->
+    <% if logged_in? %>
+      <section>
+      <div class="center side-icon">
+          <%= link_to gravatar_for(@user, size: 96), @user %>
+      </div>
+      </section>
+
+      <div class="center">
+        <span class="side-user">
+            <%= link_to @user.name, @user %>
+        </span>
+      </div>
+    <% end %>
+
+
+    <!--戻るボタン-->
+    <div class="side-btn"><%= link_to "戻 る", redirect_before_url, class: "btn btn-sm btn-primary btn-block" %></div>
+
+    <!-- 編集ボタン -->
+    <% if current_user?(@community.user) %>
+      <div class="side-btn"><%= link_to "編 集", edit_community_path(@community), class: "btn btn-sm btn-primary btn-block" %></div>
+      <div class="side-btn"><%= link_to "削 除", @community, class: "btn btn-sm btn-primary btn-block", method: :delete, data: { confirm: "You sure?" } %></div>
+    <% end %>
   </div>
 
   <!-- 参加ユーザー（フォロー）一覧を表示（右サイドバー） -->

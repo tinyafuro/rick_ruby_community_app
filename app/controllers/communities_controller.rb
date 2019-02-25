@@ -9,27 +9,35 @@ class CommunitiesController < ApplicationController
     before_location communities_path
   end
 
+  def new
+    @community = Community.new
+    @user = current_user if logged_in?
+  end
+
   def show
     @community = Community.find(params[:id])
+    @user = current_user if logged_in?
   end
 
   def edit
     # @community = Community.find(params[:id])
+    @user = current_user if logged_in?
   end
 
   def create
     @community = current_user.community.build(community_params)
+    @user = current_user if logged_in?
     if @community.save
       flash[:success] = "Community created!"
-      redirect_to root_url
+      redirect_to @community
     else
       @feed_items = []
-      render 'static_pages/home'
+      render 'edit'
     end
   end
 
-  def update    
-    # @community = Community.find(params[:id])
+  def update
+    @user = current_user if logged_in? 
     if @community.update_attributes(community_params)
       flash[:success] = "Community updated"
       redirect_to @community

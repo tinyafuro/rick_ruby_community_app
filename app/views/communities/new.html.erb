@@ -1,4 +1,4 @@
-<% provide(:title, "Edit community") %>
+<% provide(:title, "New community") %>
 
 
 <ul class="community-edit">
@@ -23,7 +23,7 @@
 
     <!--戻るボタン-->
     <div class="side-btn">
-      <%= link_to "戻る", @community, class: "btn btn-sm btn-primary btn-block" %>
+      <%= link_to "戻る", @user, class: "btn btn-sm btn-primary btn-block" %>
     </div>
 
   </div>
@@ -57,7 +57,7 @@
       </div>
 
       <div class="form-block">
-        <%= f.submit "更 新", class: "btn btn-primary" %>
+        <%= f.submit "登 録", class: "btn btn-primary" %>
       </div>
 
     <% end %>
@@ -65,48 +65,3 @@
     </div>
   </div>
 </ul>
-
-
-
-
-
-
-<%
-=begin
-%>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-
-    <!-- 戻るボタン -->
-    <%= link_to "戻る", @community, class: "btn btn-sm btn-primary" %>
-    
-    <h1>Update your community</h1>
-    
-    <%= form_for(@community) do |f| %>
-      <%= render 'shared/error_messages', object: f.object%>
-      <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control' %>
-      <%= f.label :body %>
-      <%= f.text_field :body, class: 'form-control' %>
-      <%= f.label :picture %>
-      <p><%= image_tag @community.picture.url if @community.picture? %></p>
-      <span class="picture">
-        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-      </span>
-      <%= f.submit "Update changes", class: "btn btn-primary" %>
-    <% end %>
-    
-    <div class="gravatar_edit">
-      <%= gravatar_for @community.user %>
-      <p><%= @community.user.name %></p>
-      <a href="http://gravatar.com/emails" target="_blank">change</a>
-    </div>
-    
-  </div>
-</div>
-
-
-<%
-=end
-%>
