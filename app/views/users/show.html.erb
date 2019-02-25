@@ -1,5 +1,86 @@
 <% provide(:title, @user.name) %>
 <div class="row">
+  <div class="user-show">
+
+    <!-- 左カラム -->
+    <aside class="col-md-2">
+
+      <!-- ユーザー情報 -->
+      <section>
+      <div class="center side-icon">
+        <%= link_to gravatar_for(@user, size: 128), @user %>
+      </div>
+      </section>
+
+      <div class="center">
+        <span class="side-user">
+          <%= link_to @user.name, @user %>
+        </span>
+      </div>
+
+      <!-- コミュニティ作成ボタン -->
+      <div class="side-btn"><%= link_to "コミュニティ作成", edit_community_path(@communities.first), class: "btn btn-sm btn-primary btn-block" %></div>
+
+    </aside>
+
+    <!-- 右カラム -->
+    <div class="col-md-10">
+
+      <!-- マイコミュニティ／参加コミュニティ 選択タブ -->
+      <div class="tab">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="active" role="presentation">
+            <a aria-controls="tab_a" data-toggle="tab" href="#tab_a" role="tab"> MyList </a>
+          </li>
+          <li role="presentation">
+            <a aria-controls="tab_b" data-toggle="tab" href="#tab_b" role="tab"> Follow </a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab_a" role="tabpanel">
+            <p class="tab-head">
+              作成コミュニティ
+            </p>
+
+            <!-- 作成コミュニティ -->
+            <% if @user.community.any? %>
+              <ol class="user-show">
+                <%= render @communities %>
+              </ol>
+            <% end %>
+
+          </div>
+          
+          <div class="tab-pane" id="tab_b" role="tabpanel">
+            <p class="tab-head">
+              参加コミュニティ
+            </p>
+
+            <!-- 参加コミュニティ -->
+            <% if @user.following.any? %>
+              <ol class="user-show">
+                <%= render @user.following %>
+              </ol>
+            <% end %>
+
+          </div>
+          <div class="center"><%= will_paginate @communities %></div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+</div>
+
+
+
+<%
+=begin
+%>
+
+<% provide(:title, @user.name) %>
+<div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
@@ -20,3 +101,9 @@
     <% end %>
   </div>
 </div>
+
+    <h3>Communities (<%= @user.community.count %>)</h3>
+
+<%
+=end
+%>

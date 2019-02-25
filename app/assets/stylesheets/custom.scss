@@ -406,7 +406,6 @@ img {
   }
 }
 
-
 aside {
   textarea {
     height: 100px;
@@ -420,3 +419,90 @@ span.picture {
   }
 }
 
+/* ユーザープロフィールページ */
+.user-show {
+  list-style: none;
+  padding: 0px 0px 0px 10px;
+
+  .side-icon {
+    margin-top: 20px;
+    background-color: red;
+    .gravatar {
+      margin-left: 15px;
+    }
+  }
+  .side-user {
+    font-size: 1.0em;
+    margin: 10px 0px 10px 0px;
+    padding: 6px 10px 6px 10px;
+    border-radius: 0.8em;
+    background-color: #e8e8e8;
+  }
+  .side-btn {
+    width: 100%;
+    margin: 30px 0px 0px 0px;
+  }
+  .tag {
+    font-size: 0.8em;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 6px 8px 6px 8px;
+    border-radius: 0.8em;
+    color: white;
+    background-color: #c0392b;
+  }
+  .gravatar {
+    float: left;
+    margin-left: 60px;
+    margin-right: 5px;
+  }
+  
+  .user-name {
+    font-size: 0.9em;
+    margin-top: 20px;
+    padding: 6px 8px 6px 8px;
+    border-radius: 0.8em;
+    background-color: #e8e8e8;
+  }
+  .time-stamp {
+    font-size: 0.8em;
+    color: gray;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+  .community_title {
+    font-size: 1.7em;
+    margin: 40px 30px 10px 30px;
+  }
+  .community_body {
+    font-size: 1.0em;
+    margin: 0px 30px 10px 20px;
+    color: gray;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .follower {
+    font-size: 0.9em;
+    margin-left: 30px;
+  }
+  .tab {
+    margin: 60px 20px 60px 20px;
+    li {
+      padding: 0px 0px 0px 0px;
+      border: 0px solid #e8e8e8;
+      margin: 0px 0px 0px 0px;
+    }
+  }
+  .tab-head {
+    margin: 30px;
+  }
+  .tab-pane {
+    li {
+      padding: 10px 0px 30px 0px;
+      border: 2px solid #e8e8e8;
+      margin: 10px 10px 30px 10px;
+    }
+  }
+}

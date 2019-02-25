@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
 
   def home
     # すべてのコミュニティ情報取得
-    @communities = Community.paginate(page: params[:page])
+    @communities = Community.paginate(page: params[:page], per_page: 10)
     # 現在のURLを記憶
     before_location root_path
 
