@@ -37,6 +37,12 @@
       <%= render 'shared/error_messages', object: f.object%>
 
       <div class="form-block">
+        <%= f.label "タグ" %>
+        <%= f.text_field :tag, class: 'form-control' %>
+        <p>*10字以内</p>
+      </div>
+
+      <div class="form-block">
         <%= f.label "タイトル" %>
         <%= f.text_field :title, class: 'form-control' %>
         <p>*30字以内</p>
@@ -44,7 +50,7 @@
 
       <div class="form-block">
         <%= f.label "内容" %>
-        <%= f.text_area :body, size: "200x15", class: 'form-control' %>
+        <%= f.text_area :body, size: "200x12", class: 'form-control' %>
         <p>*1000字以内</p>
       </div>
 

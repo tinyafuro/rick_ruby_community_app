@@ -32,7 +32,8 @@ users = User.order(:created_at).take(6)
   Faker::Config.locale = 'ja'
   community_title = Faker::University.name
   community_body = Faker::Address.state
-  users.each { |user| user.community.create!(title: community_title, body: community_body) }
+  community_tag = Faker::App.name
+  users.each { |user| user.community.create!(title: community_title, body: community_body, tag: community_tag) }
 end
 
 

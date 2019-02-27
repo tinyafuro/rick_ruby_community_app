@@ -62,8 +62,11 @@
         
         <!-- タグ -->
         <span class="col-md-7">
-          <span class="tag">Ruby on Rails</span>
+          <% unless @community.tag == "" %>
+            <span class="tag"><%= @community.tag %></span>
+          <% end %>
         </span>
+        
 
         <!-- ユーザー名 -->
         <span class="col-md-3">

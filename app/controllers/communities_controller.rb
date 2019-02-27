@@ -32,7 +32,7 @@ class CommunitiesController < ApplicationController
       redirect_to @community
     else
       @feed_items = []
-      render 'edit'
+      render 'new'
     end
   end
 
@@ -56,7 +56,7 @@ class CommunitiesController < ApplicationController
   private
 
     def community_params
-      params.require(:community).permit(:title, :body, :picture)
+      params.require(:community).permit(:title, :body, :tag, :picture)
     end
 
     def correct_user

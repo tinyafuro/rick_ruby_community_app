@@ -16,6 +16,7 @@ class Community < ApplicationRecord
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 30 }
   validates :body, presence: true, length: { maximum: 1000 }
+  validates :tag, allow_blank: true, length: { maximum: 10 }
 
 
   private
